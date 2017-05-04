@@ -1,0 +1,31 @@
+<div class="container">
+  <h1>Movies Index Page</h1>
+  <a href="/movies/new">Create a New Movie</a>
+  <hr>
+  {{#each movies}}
+  <div class="row">
+    <div class="col-md-2">
+      <img src="{{ this.poster_url }}"
+        alt="{{ this.title }}"
+        class="poster">
+    </div>
+    <div class="col-md-6">
+      <h2>
+        <a href="/movies/{{ this.id }}">{{ this.title }}</a>
+      </h2>
+      <p>Director: {{ this.director }}</p>
+      <p>Year: {{ this.year }}</p>
+      <p>My Rating: {{ this.my_rating }}</p>
+      <p>
+    <form action="/movies/{{ this.id }}?_method=DELETE" method="POST">
+      <input
+        class="btn btn-sm btn-danger"
+        type="submit"
+        name="delete"
+        value="Delete Movie">
+    </form>
+  </p>
+    </div>
+  </div>
+  {{/each}}
+</div>
